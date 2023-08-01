@@ -35,7 +35,7 @@ import java.time.LocalDateTime
 
 @OptIn(ExperimentalMaterialApi::class, ExperimentalFoundationApi::class)
 @Composable
-internal fun NoteItem(
+internal fun NotesItem(
     modifier: Modifier = Modifier,
     domain: NoteDomain,
     inSelection: Boolean,
@@ -114,7 +114,7 @@ internal fun NoteItem(
 @Preview
 @Composable
 private fun NotePreview() = NotesTheme {
-    NoteItem(
+    NotesItem(
         domain = NoteDomain(
             note = Note(
                 id = NoteId(1L),

@@ -12,3 +12,11 @@ fun cutCornerSize() = dimensionResource(id = R.dimen.ui_cut_corner_size)
 @Composable
 @ReadOnlyComposable
 fun cornerRadius() = dimensionResource(id = R.dimen.ui_corner_radius)
+
+@Composable
+@ReadOnlyComposable
+fun padding() = dimensionResource(id = R.dimen.ui_padding)
+
+@Composable
+@ReadOnlyComposable
+fun secondaryPadding() = padding() / 4 * 2
