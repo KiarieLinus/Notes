@@ -1,6 +1,6 @@
 dependencies {
-//    api(project(":common:notes-api"))
-//    api(project(":common:settings-api"))
+    api(project(":common:notes-api"))
+    api(project(":common:settings-api"))
     api(project(":common:ui"))
 
     // Compose

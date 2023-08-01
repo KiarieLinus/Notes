@@ -1,7 +1,9 @@
-package com.kiarielinus.notes.ui
+package com.kiarielinus.notes.notes_impl
 
 import org.junit.Test
+
 import org.junit.Assert.*
+
 /**
  * Example local unit test, which will execute on the development machine (host).
  *
