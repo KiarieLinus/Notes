@@ -1,14 +1,11 @@
 package com.kiarielinus.notes.edit_note.presentation
 
-import androidx.activity.compose.BackHandler
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.kiarielinus.notes.notes_api.NoteId
-import com.kiarielinus.notes.ui.OnLifeCycleEvent
 
 @Composable
 fun EditNoteRoute(
@@ -24,16 +21,13 @@ fun EditNoteRoute(
         }
     }
 
-    LaunchedEffect(key1 = id, block = {
+    DisposableEffect(key1 = viewModel){
+        //onStart
         viewModel.getNote(id)
-    })
-
-    BackHandler {
-        goBack()
-    }
-
-    OnLifeCycleEvent(event = Lifecycle.Event.ON_PAUSE) {
-        viewModel.save()
+        onDispose {
+            //onStop
+            viewModel.save()
+        }
     }
 
     EditNoteScreen(
