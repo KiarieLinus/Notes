@@ -17,7 +17,6 @@ import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.drawscope.clipPath
-import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
@@ -27,7 +26,6 @@ import com.kiarielinus.notes.notes.api.Note
 import com.kiarielinus.notes.notes.api.NoteId
 import com.kiarielinus.notes.notes.domain.NoteDomain
 import com.kiarielinus.notes.ui.theme.NotesTheme
-import com.kiarielinus.notes.ui.theme.RedOrange
 import com.kiarielinus.notes.ui.theme.TextColor
 import com.kiarielinus.notes.ui.theme.cornerRadius
 import com.kiarielinus.notes.ui.theme.cutCornerSize
@@ -118,11 +116,10 @@ private fun NotePreview() = NotesTheme {
         domain = NoteDomain(
             note = Note(
                 id = NoteId(1L),
-                title = "Title",
-                content = "Content",
+                title = "Title Here",
+                content = "Content goes here",
                 dateCreated = LocalDateTime.now(),
                 action = null,
-                color = RedOrange.toArgb()
             ),
             selected = false,
         ),

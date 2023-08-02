@@ -1,5 +1,5 @@
 dependencies {
-//    api(project(":common:settings-api"))
+    api(project(":common:settings-api"))
     api(project(":common:ui"))
     // Compose
     implementation(libs.compose.activity)

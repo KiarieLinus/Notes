@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ui_please_wait">please wait…</string>
+    <string name="ui_yes">Yes</string>
+    <string name="ui_no">No</string>
+</resources>
