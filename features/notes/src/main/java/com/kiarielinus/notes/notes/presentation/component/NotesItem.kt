@@ -4,12 +4,17 @@ import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.material.Checkbox
+import androidx.compose.material.CheckboxDefaults
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.ListItem
 import androidx.compose.material.LocalTextStyle
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.geometry.Offset
@@ -41,71 +46,83 @@ internal fun NotesItem(
     cutCornerSize: Dp = cutCornerSize(),
     editNote: (NoteId) -> Unit,
     selectedChanged: (NoteId) -> Unit
-) = with(domain){
-    Box(
+) = with(domain) {
+    Row(
+        verticalAlignment = Alignment.CenterVertically,
         modifier = modifier.combinedClickable(
-                onClick = {
-                    if (inSelection || selected) {
-                        selectedChanged(note.id)
-                    } else editNote(note.id)
-                },
-                onLongClick = {
+            onClick = {
+                if (inSelection || selected) {
                     selectedChanged(note.id)
-                }
+                } else editNote(note.id)
+            },
+            onLongClick = {
+                selectedChanged(note.id)
+            }
+        )
+    ) {
+        if (inSelection)
+            Checkbox(
+                checked = selected,
+                onCheckedChange =  {selectedChanged(note.id)},
+                colors = CheckboxDefaults.colors(
+                    checkedColor = MaterialTheme.colors.primary
+                )
             )
-    ){
-        Canvas(
-            modifier = Modifier.matchParentSize()
-        ) {
-            val clipPath = Path().apply {
-                lineTo(size.width - cutCornerSize.toPx(), 0F)
-                lineTo(size.width, cutCornerSize.toPx())
-                lineTo(size.width, size.height)
-                lineTo(0F, size.height)
-                close()
-            }
 
-            clipPath(clipPath) {
-                drawRoundRect(
-                    color = Color(note.color),
-                    size = size,
-                    cornerRadius = CornerRadius(cornerRadius.toPx())
-                )
-                drawRoundRect(
-                    color = Color(
-                        ColorUtils.blendARGB(note.color, android.graphics.Color.BLACK, 0.2F)
-                    ),
-                    topLeft = Offset(size.width - cutCornerSize.toPx(), -100f),
-                    size = Size(cutCornerSize.toPx() + 100f, cutCornerSize.toPx() + 100f),
-                    cornerRadius = CornerRadius(cornerRadius.toPx())
-                )
-            }
-        }
-        ListItem(
-            modifier = Modifier.fillMaxWidth(),
-            singleLineSecondaryText = true,
-            overlineText = {
-                Text(note.dateModified.formatted)
-            },
-            text = {
-                Text(
-                    text = note.title,
-                    style = LocalTextStyle.current.copy(
-                        fontWeight = FontWeight.W500,
-                    ),
-                    maxLines = 1,
-                )
-            },
-            secondaryText = if (note.content.isNotBlank()) {
-                {
-                    Text(
-                        text = note.content,
-                        color = TextColor,
-                        maxLines = 1,
+        Box {
+            Canvas(
+                modifier = Modifier.matchParentSize()
+            ) {
+                val clipPath = Path().apply {
+                    lineTo(size.width - cutCornerSize.toPx(), 0F)
+                    lineTo(size.width, cutCornerSize.toPx())
+                    lineTo(size.width, size.height)
+                    lineTo(0F, size.height)
+                    close()
+                }
+
+                clipPath(clipPath) {
+                    drawRoundRect(
+                        color = Color(note.color),
+                        size = size,
+                        cornerRadius = CornerRadius(cornerRadius.toPx())
+                    )
+                    drawRoundRect(
+                        color = Color(
+                            ColorUtils.blendARGB(note.color, android.graphics.Color.BLACK, 0.2F)
+                        ),
+                        topLeft = Offset(size.width - cutCornerSize.toPx(), -100f),
+                        size = Size(cutCornerSize.toPx() + 100f, cutCornerSize.toPx() + 100f),
+                        cornerRadius = CornerRadius(cornerRadius.toPx())
                     )
                 }
-            } else null,
-        )
+            }
+            ListItem(
+                modifier = Modifier.fillMaxWidth(),
+                singleLineSecondaryText = true,
+                overlineText = {
+                    Text(note.dateModified.formatted)
+                },
+                text = {
+                    Text(
+                        text = note.title,
+                        style = LocalTextStyle.current.copy(
+                            fontWeight = FontWeight.W500,
+                        ),
+                        maxLines = 1,
+                    )
+                },
+                secondaryText = if (note.content.isNotBlank()) {
+                    {
+                        Text(
+                            text = note.content,
+                            color = TextColor,
+                            maxLines = 1,
+                        )
+                    }
+                } else null,
+            )
+        }
     }
 }
 
@@ -116,7 +133,7 @@ private fun NotePreview() = NotesTheme {
         domain = NoteDomain(
             note = Note(
                 id = NoteId(1L),
-                title = "Title Here",
+                title = "Title goes Here",
                 content = "Content goes here",
                 dateCreated = LocalDateTime.now(),
                 action = null,
@@ -124,6 +141,26 @@ private fun NotePreview() = NotesTheme {
             selected = false,
         ),
         inSelection = false,
+        editNote = {},
+        selectedChanged = {}
+    )
+}
+
+@Preview
+@Composable
+private fun NoteSelectedPreview() = NotesTheme {
+    NotesItem(
+        domain = NoteDomain(
+            note = Note(
+                id = NoteId(1L),
+                title = "Title goes Here",
+                content = "Content goes here",
+                dateCreated = LocalDateTime.now(),
+                action = null,
+            ),
+            selected = true,
+        ),
+        inSelection = true,
         editNote = {},
         selectedChanged = {}
     )
