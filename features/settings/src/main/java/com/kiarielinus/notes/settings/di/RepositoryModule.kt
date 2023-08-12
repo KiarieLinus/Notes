@@ -1,6 +1,6 @@
 package com.kiarielinus.notes.settings.di
 
-import com.kiarielinus.notes.settings.api.SettingsRepository
+import com.kiarielinus.notes.settings_api.SettingsRepository
 import com.kiarielinus.notes.settings.data.repository.SettingsRepositoryImpl
 import dagger.Binds
 import dagger.Module

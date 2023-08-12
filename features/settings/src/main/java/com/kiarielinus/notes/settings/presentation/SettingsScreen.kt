@@ -6,8 +6,8 @@ import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.kiarielinus.notes.settings.api.SettingsToggle
-import com.kiarielinus.notes.settings.api.Theme
+import com.kiarielinus.notes.settings_api.SettingsToggle
+import com.kiarielinus.notes.settings_api.Theme
 import com.kiarielinus.notes.ui.theme.NotesTheme
 import com.kiarielinus.notes.ui.theme.secondaryPadding
 import kotlinx.collections.immutable.ImmutableMap

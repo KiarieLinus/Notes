@@ -2,9 +2,9 @@ package com.kiarielinus.notes.settings.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.kiarielinus.notes.settings.api.SettingsRepository
-import com.kiarielinus.notes.settings.api.SettingsToggle
-import com.kiarielinus.notes.settings.api.Theme
+import com.kiarielinus.notes.settings_api.SettingsRepository
+import com.kiarielinus.notes.settings_api.SettingsToggle
+import com.kiarielinus.notes.settings_api.Theme
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.collections.immutable.persistentMapOf
 import kotlinx.collections.immutable.toImmutableMap

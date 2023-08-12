@@ -1,9 +1,9 @@
 package com.kiarielinus.notes.settings.data.repository
 
 import androidx.datastore.preferences.core.stringPreferencesKey
-import com.kiarielinus.notes.settings.api.SettingsRepository
-import com.kiarielinus.notes.settings.api.SettingsToggle
-import com.kiarielinus.notes.settings.api.Theme
+import com.kiarielinus.notes.settings_api.SettingsRepository
+import com.kiarielinus.notes.settings_api.SettingsToggle
+import com.kiarielinus.notes.settings_api.Theme
 import com.kiarielinus.notes.settings.data.local.SettingsDataStore
 import com.kiarielinus.notes.settings.data.model.SettingsToggleEntity
 import com.kiarielinus.notes.settings.data.model.ThemeEntity

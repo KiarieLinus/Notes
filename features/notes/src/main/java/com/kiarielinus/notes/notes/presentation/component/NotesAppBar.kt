@@ -19,7 +19,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.kiarielinus.notes.notes.R
-import com.kiarielinus.notes.notes.api.NoteAction
+import com.kiarielinus.notes.notes_api.NoteAction
 import com.kiarielinus.notes.notes.domain.NoteScreen
 import com.kiarielinus.notes.ui.theme.NotesTheme
 import com.kiarielinus.notes.ui.theme.padding

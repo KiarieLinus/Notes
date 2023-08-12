@@ -1,7 +1,7 @@
 package com.kiarielinus.notes.notes.domain
 
 import androidx.compose.runtime.Stable
-import com.kiarielinus.notes.notes.api.Note
+import com.kiarielinus.notes.notes_api.Note
 
 @Stable
 internal data class NoteDomain(

@@ -1,6 +1,6 @@
 package com.kiarielinus.notes.settings.data.model
 
-import com.kiarielinus.notes.settings.api.Theme
+import com.kiarielinus.notes.settings_api.Theme
 import kotlinx.serialization.Serializable
 
 @JvmInline

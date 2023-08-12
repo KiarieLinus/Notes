@@ -1,6 +1,6 @@
 package com.kiarielinus.notes.settings.data.model
 
-import com.kiarielinus.notes.settings.api.SettingsToggle
+import com.kiarielinus.notes.settings_api.SettingsToggle
 import kotlinx.serialization.Serializable
 
 @Serializable

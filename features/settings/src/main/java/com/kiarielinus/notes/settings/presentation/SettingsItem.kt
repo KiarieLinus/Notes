@@ -9,8 +9,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import com.kiarielinus.notes.settings.R
-import com.kiarielinus.notes.settings.api.SettingsToggle
-import com.kiarielinus.notes.settings.api.Theme
+import com.kiarielinus.notes.settings_api.SettingsToggle
+import com.kiarielinus.notes.settings_api.Theme
 import com.kiarielinus.notes.ui.theme.NotesTheme
 
 @Composable

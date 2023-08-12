@@ -27,8 +27,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.core.graphics.ColorUtils
 import com.kiarielinus.notes.model.formatted
-import com.kiarielinus.notes.notes.api.Note
-import com.kiarielinus.notes.notes.api.NoteId
+import com.kiarielinus.notes.notes_api.Note
+import com.kiarielinus.notes.notes_api.NoteId
 import com.kiarielinus.notes.notes.domain.NoteDomain
 import com.kiarielinus.notes.ui.theme.NotesTheme
 import com.kiarielinus.notes.ui.theme.TextColor
@@ -63,7 +63,7 @@ internal fun NotesItem(
         if (inSelection)
             Checkbox(
                 checked = selected,
-                onCheckedChange =  {selectedChanged(note.id)},
+                onCheckedChange =  null,
                 colors = CheckboxDefaults.colors(
                     checkedColor = MaterialTheme.colors.primary
                 )

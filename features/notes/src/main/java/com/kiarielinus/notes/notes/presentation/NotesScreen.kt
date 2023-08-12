@@ -22,9 +22,9 @@ import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.kiarielinus.notes.notes.R
-import com.kiarielinus.notes.notes.api.Note
-import com.kiarielinus.notes.notes.api.NoteAction
-import com.kiarielinus.notes.notes.api.NoteId
+import com.kiarielinus.notes.notes_api.Note
+import com.kiarielinus.notes.notes_api.NoteAction
+import com.kiarielinus.notes.notes_api.NoteId
 import com.kiarielinus.notes.notes.domain.NoteDomain
 import com.kiarielinus.notes.notes.domain.NoteScreen
 import com.kiarielinus.notes.notes.presentation.component.NotesAppBar
