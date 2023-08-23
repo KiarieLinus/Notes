@@ -4,4 +4,6 @@ dependencies {
     implementation(libs.firebase.auth)
     // Preferences datastore
     implementation(libs.datastore)
+    //Play-service Coroutine extension
+    implementation(libs.kotlinx.coroutines.play.services)
 }

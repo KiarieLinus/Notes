@@ -20,4 +20,6 @@ dependencies {
     implementation(libs.firebase.auth)
     // Google Sign In
     implementation(libs.firebase.auth.google)
+
+    implementation(libs.kotlinx.coroutines.play.services)
 }

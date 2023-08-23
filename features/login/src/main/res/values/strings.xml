@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="login_google_client_id" tools:ignore="TypographyDashes">
+        315800993939-2ore0c1q2ns52o59pgeavjmulgiehut0.apps.googleusercontent.com</string>
+</resources>
