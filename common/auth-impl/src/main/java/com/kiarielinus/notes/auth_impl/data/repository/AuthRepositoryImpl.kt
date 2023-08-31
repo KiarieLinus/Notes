@@ -15,7 +15,7 @@ import javax.inject.Inject
 
 internal class AuthRepositoryImpl @Inject constructor(
     private val remote: AuthService,
-    private val local: AuthDataStore
+    private val local: AuthDataStore,
 ) : AuthRepository {
     override val currentUser: Flow<User?>
         get() = local.get().map { user ->
