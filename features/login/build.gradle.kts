@@ -1,7 +1,3 @@
-plugins {
-    id("com.google.gms.google-services")
-}
-
 dependencies {
     api(project(":common:auth-api"))
     api(project(":common:ui"))

@@ -4,8 +4,11 @@ import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import androidx.compose.foundation.isSystemInDarkTheme
-import androidx.compose.runtime.*
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import com.bumble.appyx.core.integration.NodeHost
 import com.bumble.appyx.core.integrationpoint.NodeActivity
+import com.kiarielinus.notes.navigation.Navigation
 import com.kiarielinus.notes.settings_api.Theme
 import com.kiarielinus.notes.ui.theme.NotesTheme
 import dagger.hilt.android.AndroidEntryPoint
@@ -20,6 +23,8 @@ class MainActivity : NodeActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             val theme by viewModel.theme.collectAsState()
+            val screen by viewModel.startScreen.collectAsState()
+
             NotesTheme(
                 darkTheme = when (theme) {
                     Theme.System -> isSystemInDarkTheme()
@@ -27,7 +32,18 @@ class MainActivity : NodeActivity() {
                     Theme.Dark -> true
                 },
                 content = {
-
+                    screen?.let {
+                        NodeHost(
+                            integrationPoint = appyxIntegrationPoint,
+                            factory = {context ->
+                                Navigation(
+                                    buildContext = context,
+                                    startingRoute = it,
+                                    viewModel = viewModel
+                                )
+                            }
+                        )
+                    }
                 }
             )
         }

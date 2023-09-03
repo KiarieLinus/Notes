@@ -12,7 +12,7 @@ import com.kiarielinus.notes.notes_api.NoteId
 import com.kiarielinus.notes.presentation.MainViewModel
 
 class EditNoteRoute(
-    private val id: NoteId?,
+    private val noteId: NoteId?,
     buildContext: BuildContext,
     private val backStack: BackStack<Navigation.Route>,
 ) : Node(buildContext) {
@@ -27,7 +27,7 @@ class EditNoteRoute(
 
             EditNoteRoute(
                 modifier = modifier,
-                id = id,
+                id = noteId,
                 navigateBack = {
                     viewModel.pop(backStack)
                 }
