@@ -34,6 +34,7 @@ fun EditNoteRoute(
         title = viewModel.title,
         content = viewModel.content,
         editedAt = viewModel.editedAt,
+        color = viewModel.color,
         navigateBack = goBack,
         onTitleChanged = viewModel::updateTitle,
         onContentChanged = viewModel::updateContent,
@@ -41,5 +42,6 @@ fun EditNoteRoute(
             viewModel.performAction(action)
             goBack()
         },
+        onColorChange = viewModel::updateColor
     )
 }

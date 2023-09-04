@@ -8,9 +8,13 @@ import androidx.compose.material.Scaffold
 import androidx.compose.material.ScaffoldState
 import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -55,10 +59,24 @@ class Navigation(
         val viewModel: MainViewModel = viewModel()
         val screen by viewModel.screen.collectAsState()
         val scope = rememberCoroutineScope()
+        var drawerGesturesEnabled by remember {
+            mutableStateOf(false)
+        }
+
+        LaunchedEffect(
+            key1 = screen,
+            block = {
+                drawerGesturesEnabled = when (screen) {
+                    is Route.Notes -> true
+                    else -> false
+                }
+            }
+        )
 
         Scaffold(
             modifier = modifier,
             scaffoldState = scaffoldState,
+            drawerGesturesEnabled = drawerGesturesEnabled,
             drawerContent = {
                 screen.drawer?.let { drawerItem ->
                     AppDrawer(

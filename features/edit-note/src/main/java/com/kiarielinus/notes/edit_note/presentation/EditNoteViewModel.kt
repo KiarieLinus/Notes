@@ -1,6 +1,7 @@
 package com.kiarielinus.notes.edit_note.presentation
 
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
@@ -29,6 +30,9 @@ internal class EditNoteViewModel @Inject constructor(
     var editedAt: LocalDateTime by mutableStateOf(LocalDateTime.now())
         private set
 
+    var color by mutableIntStateOf(Note.noteColors.last())
+        private set
+
     private var note: Note? = null
 
     fun getNote(id: NoteId?) {
@@ -39,6 +43,7 @@ internal class EditNoteViewModel @Inject constructor(
             title = note?.title ?: ""
             content = note?.content ?: ""
             editedAt = note?.dateModified ?: LocalDateTime.now()
+            color = note?.color ?: Note.noteColors.last()
         }
     }
 
@@ -50,6 +55,10 @@ internal class EditNoteViewModel @Inject constructor(
         this.content = content
     }
 
+    fun updateColor(color: Int){
+        this.color = color
+    }
+
     fun performAction(action: NoteAction?) {
         viewModelScope.launch {
             repository.performAction(action, note!!.id)
@@ -59,9 +68,9 @@ internal class EditNoteViewModel @Inject constructor(
     fun save() {
         viewModelScope.launch {
             // only save note with changes
-            if(note?.title != title || note?.content != content){
+            if(note?.title != title || note?.content != content || note?.color != color){
                 val id = repository.save(
-                    note!!.copy(title = title, content = content)
+                    note!!.copy(title = title, content = content, color = color)
                 ).firstOrNull() ?: return@launch
                 note = repository.getNote(id).first()
             }

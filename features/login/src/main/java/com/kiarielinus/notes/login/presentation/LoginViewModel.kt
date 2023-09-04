@@ -26,9 +26,9 @@ internal class LoginViewModel @Inject constructor(
                     }
                 }
             }
+            isLoading = false
         }
         googleLogin = {credential, onLogin ->
-            isGoogleLoading = true
             viewModelScope.launch {
                 when (val result = repository.signInWithCredential(credential)) {
                     is Resource.Error -> loginError = result.message

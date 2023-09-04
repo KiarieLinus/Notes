@@ -78,6 +78,7 @@ internal fun LoginCard(
             AppButton(
                 modifier = Modifier.fillMaxWidth(),
                 onClick = {
+                    isLoading = true
                     login(onLogin)
                 },
                 isLoading = isLoading,
@@ -94,7 +95,10 @@ internal fun LoginCard(
             GoogleSignInButton(
                 modifier = Modifier.fillMaxWidth(),
                 loading = isGoogleLoading,
-                onGoogleSignInClick = onGoogleSignInClick,
+                onGoogleSignInClick = {
+                    isGoogleLoading = true
+                    onGoogleSignInClick()
+                },
             )
             loginError?.let { ErrorText(error = it) }
         }

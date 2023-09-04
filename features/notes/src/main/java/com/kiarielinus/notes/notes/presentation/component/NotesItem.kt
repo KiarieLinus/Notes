@@ -6,6 +6,7 @@ import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Checkbox
 import androidx.compose.material.CheckboxDefaults
 import androidx.compose.material.ExperimentalMaterialApi
@@ -25,6 +26,7 @@ import androidx.compose.ui.graphics.drawscope.clipPath
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.dp
 import androidx.core.graphics.ColorUtils
 import com.kiarielinus.notes.model.formatted
 import com.kiarielinus.notes.notes_api.Note
@@ -62,8 +64,9 @@ internal fun NotesItem(
     ) {
         if (inSelection)
             Checkbox(
+                modifier = Modifier.padding(end = 8.dp),
                 checked = selected,
-                onCheckedChange =  null,
+                onCheckedChange = null,
                 colors = CheckboxDefaults.colors(
                     checkedColor = MaterialTheme.colors.primary
                 )
@@ -101,13 +104,19 @@ internal fun NotesItem(
                 modifier = Modifier.fillMaxWidth(),
                 singleLineSecondaryText = true,
                 overlineText = {
-                    Text(note.dateModified.formatted)
+                    Text(
+                        text = note.dateModified.formatted,
+                        style = LocalTextStyle.current.copy(
+                            color = Color.Black
+                        )
+                    )
                 },
                 text = {
                     Text(
                         text = note.title,
                         style = LocalTextStyle.current.copy(
                             fontWeight = FontWeight.W500,
+                            color = Color.Black
                         ),
                         maxLines = 1,
                     )

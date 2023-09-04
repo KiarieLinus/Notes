@@ -144,9 +144,9 @@ private fun EmptyNotesScreenPreview() = NotesTheme {
 
 @Preview
 @Composable
-private fun NotesScreenPreview() = NotesTheme {
+private fun NotesScreenPreview() = NotesTheme(darkTheme = true) {
     NotesScreen(
-        notes = (1..10).map {
+        notes = (7..12).map {
             NoteDomain(
                 note = Note(
                     id = NoteId(it.toLong()),
