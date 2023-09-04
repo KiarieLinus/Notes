@@ -13,7 +13,7 @@ import kotlinx.coroutines.flow.Flow
 internal abstract class NotesDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    abstract fun save(vararg notes: NoteEntity): Array<Long>
+    abstract suspend fun save(vararg notes: NoteEntity): Array<Long>
 
     @Query("SELECT * FROM notes")
     abstract fun getNotes() : Flow<List<NoteEntity>>
@@ -22,5 +22,5 @@ internal abstract class NotesDao {
     abstract fun getNote(id: NoteId): Flow<NoteEntity>
 
     @Delete
-    abstract fun delete(vararg notes: NoteEntity)
+    abstract suspend fun delete(vararg notes: NoteEntity)
 }

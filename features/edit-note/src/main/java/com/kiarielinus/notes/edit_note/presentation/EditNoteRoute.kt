@@ -16,7 +16,6 @@ fun EditNoteRoute(
     val viewModel: EditNoteViewModel = viewModel()
     val goBack: () -> Unit = remember {
         {
-            viewModel.save()
             navigateBack()
         }
     }
